@@ -1,0 +1,1616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4f53b1a1-3afa-487e-bc86-8e7c8bbe7936" activeEnvironment="Default" name="test14new.is-mis" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="83340bf2-85af-4c10-a5df-ea6a962d4d3b" wsaVersion="NONE" name="ErPortalSoapBinding" type="wsdl" bindingName="{http://www.rt-eu.ru/med/er/v2_0}ErPortalSoapBinding" soapVersion="1_1" anonymous="optional" definition="https://test14new.is-mis.ru/FerCon/services/appointment?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://test14new.is-mis.ru/FerCon/services/appointment?wsdl"><con:part><con:url>https://test14new.is-mis.ru/FerCon/services/appointment?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ErPortal" targetNamespace="http://www.rt-eu.ru/med/er/v2_0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.rt-eu.ru/med/er/v2_0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.rt-eu.ru/med/er/v2_0" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="CancelAppointmentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Book_Id_Mis" type="xs:string"/>
+            <xs:element name="Canceled_Reason" type="xs:string"/>
+            <xs:element minOccurs="0" name="Error_Data_Parameters" type="tns:Error_Data_Parameters"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelAppointmentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Book_Id_Mis" type="xs:string"/>
+            <xs:element name="Status_Code" type="xs:string"/>
+            <xs:element name="Comment" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateAppointmentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Book_Id_Mis" type="xs:string"/>
+            <xs:element name="Slot_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Specialist_SNILS" type="xs:string"/>
+            <xs:element minOccurs="0" name="Room_OID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Room_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="MO_OID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Service_Post" type="tns:Service_Post"/>
+            <xs:element minOccurs="0" name="Service_Specialty" type="tns:Service_Specialty"/>
+            <xs:element minOccurs="0" name="Service_Info" type="tns:Services_Info"/>
+            <xs:element minOccurs="0" name="Vaccination_Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="Referral_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cards_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Age_Group" type="xs:string"/>
+            <xs:element minOccurs="0" name="Patient_Data" type="tns:Patient_Data"/>
+            <xs:element minOccurs="0" name="Requisites" type="tns:Requisites"/>
+            <xs:element minOccurs="0" name="Booking_Status" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateAppointmentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Session_ID" type="xs:string"/>
+            <xs:element name="Book_Id_Mis" type="xs:string"/>
+            <xs:element name="Status" type="tns:Status"/>
+            <xs:element minOccurs="0" name="Service_Conditions" type="xs:string"/>
+            <xs:element name="Slot_Id" type="xs:string"/>
+            <xs:element name="Visit_Time" type="xs:dateTime"/>
+            <xs:element minOccurs="0" name="Room" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMOInfoExtendedRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Service_Posts" type="tns:Service_Posts"/>
+            <xs:element minOccurs="0" name="Service_Specialty" type="tns:Service_Specialty"/>
+            <xs:element minOccurs="0" name="Vaccination_Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="Available_Date_inMO" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Start_Date_Range" type="xs:date"/>
+            <xs:element minOccurs="0" name="End_Date_Range" type="xs:date"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMOInfoExtendedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="MO_List">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="MO" type="tns:MO_Param_Age"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMOResourceInfoPaidRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Service_Post" type="tns:Service_Post"/>
+            <xs:element minOccurs="0" name="Service_Info" type="tns:Services_Info"/>
+            <xs:element maxOccurs="unbounded" name="MO_OID" type="xs:string"/>
+            <xs:element name="Start_Date_Range" type="xs:date"/>
+            <xs:element name="End_Date_Range" type="xs:date"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMOResourceInfoPaidResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="MO_Resource_List" type="tns:MO_Resource_Service_List"/>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMOResourceInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Book_Id_Mis" type="xs:string"/>
+            <xs:element minOccurs="0" name="Service_Posts" type="tns:Service_Posts"/>
+            <xs:element minOccurs="0" name="Service_Specialty" type="tns:Service_Specialty"/>
+            <xs:element minOccurs="0" name="Vaccination_Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="MO_OID_List">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="MO_OID" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Referral_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cards_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Slot_List" type="xs:boolean"/>
+            <xs:element name="Start_Date_Range" type="xs:date"/>
+            <xs:element name="End_Date_Range" type="xs:date"/>
+            <xs:element minOccurs="0" name="Referral" type="tns:Param_Of_Referral"/>
+            <xs:element minOccurs="0" name="Patient_Data" type="tns:Patient_Data"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMOResourceInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="MO_Resource_List" type="tns:MO_Resource_List"/>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPatientInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element name="Patient_Data" type="tns:Patient_Data"/>
+            <xs:element minOccurs="0" name="Pass_referral" type="xs:int"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Patient_Info_Kind" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPatientInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Patient_Id" type="xs:string"/>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+              <xs:element name="Patient_Attachment" type="tns:Patient_Attachment"/>
+              <xs:element name="No_Attachment_Code" type="tns:Attachment_Purpose"/>
+            </xs:choice>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+              <xs:element name="Examination" type="tns:Examination"/>
+              <xs:element name="No_Examination_Cards_Id" type="xs:string"/>
+            </xs:choice>
+            <xs:element minOccurs="0" name="Referrals" type="tns:Referrals"/>
+            <xs:element minOccurs="0" name="No_Referrals" type="xs:boolean"/>
+            <xs:element minOccurs="0" name="Vaccinations">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="Vaccination_Id" type="xs:int"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetReferralInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element name="Patient_Data" type="tns:Patient_Data"/>
+            <xs:element name="Referral_Number" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetReferralInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Patient_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Referrals" type="tns:Referrals"/>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetScheduleInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Book_Id_Mis" type="xs:string"/>
+            <xs:element minOccurs="0" name="Specialist_SNILS" type="xs:string"/>
+            <xs:element minOccurs="0" name="Room_OID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Room_Id" type="xs:string"/>
+            <xs:element name="MO_OID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Service_Post" type="tns:Service_Post"/>
+            <xs:element minOccurs="0" name="Service_Specialty" type="tns:Service_Specialty"/>
+            <xs:element minOccurs="0" name="Service_Info" type="tns:Services_Info"/>
+            <xs:element minOccurs="0" name="Vaccination_Id" type="xs:int"/>
+            <xs:element minOccurs="0" name="Referral_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cards_Id" type="xs:string"/>
+            <xs:element minOccurs="0" name="Age_Group" type="xs:string"/>
+            <xs:element name="Start_Date_Range" type="xs:date"/>
+            <xs:element name="End_Date_Range" type="xs:date"/>
+            <xs:element name="Start_Time_Range" type="xs:time"/>
+            <xs:element name="End_Time_Range" type="xs:time"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetScheduleInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Schedule">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element maxOccurs="unbounded" name="Slots">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="Slot_Id" type="xs:string"/>
+                        <xs:element name="VisitTime" type="xs:anySimpleType"/>
+                        <xs:element minOccurs="0" name="Room" type="xs:string"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServicePostSpecsInfoRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element name="MO_Id" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetServicePostSpecsInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Session_ID" type="xs:string"/>
+            <xs:element minOccurs="0" name="Service_Post_Specs" type="tns:Service_Post_Specs"/>
+            <xs:element minOccurs="0" name="Error" type="tns:Error_Type"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReferralAppointmentInformationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Book_Id_Mis" type="xs:string"/>
+            <xs:element name="Referral_Id" type="xs:string"/>
+            <xs:element name="Appointment_Status" type="xs:string"/>
+            <xs:element name="MO_OID" type="xs:string"/>
+            <xs:element name="MO_Name" type="xs:string"/>
+            <xs:element name="Resource_Name" type="xs:string"/>
+            <xs:element name="Visit_Time" type="xs:dateTime"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReferralAppointmentInformationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Book_Id_Mis" type="xs:string"/>
+            <xs:element name="Status_Code" type="xs:string"/>
+            <xs:element name="Comment" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Service_Post">
+        <xs:sequence>
+          <xs:element name="Post" type="tns:Post"/>
+          <xs:element minOccurs="0" name="Services_Info" type="tns:Services_Info"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Post">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Post_Id" type="xs:integer"/>
+          <xs:element minOccurs="0" name="Add_Info_Post" type="tns:Add_Info_Post"/>
+          <xs:element minOccurs="0" name="Ext_Post_Id" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Add_Info_Post">
+        <xs:sequence>
+          <xs:element name="Inner_Id" type="xs:string"/>
+          <xs:element name="Inner_Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Services_Info">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Complex_Service_Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Complex_Service_Id" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" name="Service" type="tns:Service"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Service">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Service_Id" type="xs:string"/>
+          <xs:element minOccurs="0" name="Add_Info_Service" type="tns:Add_Info_Service"/>
+          <xs:element minOccurs="0" name="Ext_Service_Id" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Add_Info_Service">
+        <xs:sequence>
+          <xs:element name="Inner_Id" type="xs:string"/>
+          <xs:element name="Inner_Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Service_Specialty">
+        <xs:sequence>
+          <xs:element name="Specialty_Id" type="xs:int"/>
+          <xs:element name="Services_Info" type="tns:Services_Info"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Patient_Data">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OMS_Number" type="xs:string"/>
+          <xs:element minOccurs="0" name="OMS_Series" type="xs:string"/>
+          <xs:element minOccurs="0" name="SNILS" type="xs:string"/>
+          <xs:element name="First_Name" type="xs:string"/>
+          <xs:element name="Last_Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Middle_Name" type="xs:string"/>
+          <xs:element name="Birth_Date" type="xs:date"/>
+          <xs:element name="Sex" type="xs:string"/>
+          <xs:element minOccurs="0" name="Email" type="xs:string"/>
+          <xs:element minOccurs="0" name="Phone" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Requisites">
+        <xs:sequence>
+          <xs:element name="DUL" type="tns:DUL"/>
+          <xs:element minOccurs="0" name="Last_Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="First_Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Middle_Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DUL">
+        <xs:sequence>
+          <xs:element name="Type" type="xs:integer"/>
+          <xs:element name="Holder" type="xs:string"/>
+          <xs:element minOccurs="0" name="Series" type="xs:string"/>
+          <xs:element name="Number" type="xs:string"/>
+          <xs:element name="Issue_Date" type="xs:date"/>
+          <xs:element name="Issued_By" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Status">
+        <xs:sequence>
+          <xs:element name="Status_Code" type="xs:string"/>
+          <xs:element minOccurs="0" name="Comment" type="xs:string"/>
+          <xs:element minOccurs="0" name="Parameters" type="tns:Parameters"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Parameters">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Parameter" type="tns:Parameter"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Parameter">
+        <xs:sequence>
+          <xs:element name="Name" type="xs:string"/>
+          <xs:element name="Value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Service_Posts">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Post" type="tns:Post"/>
+          <xs:element minOccurs="0" name="Services_Info" type="tns:Services_Info"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MO_Param_Age">
+        <xs:complexContent>
+          <xs:extension base="tns:MO_Param">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Age_Group" type="xs:string"/>
+              <xs:element minOccurs="0" name="Available_Dates">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Available_Date" type="xs:dateTime"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="No_Schedule_Reason" type="tns:No_Schedule_Reason"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MO_Param">
+        <xs:complexContent>
+          <xs:extension base="tns:MO_Base">
+            <xs:sequence>
+              <xs:element name="MO_Address" type="xs:string"/>
+              <xs:element minOccurs="0" name="MO_Phone" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="MO_Base">
+        <xs:sequence>
+          <xs:element name="MO_Id" type="xs:string"/>
+          <xs:element name="MO_OID" type="xs:string"/>
+          <xs:element name="MO_Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="No_Schedule_Reason">
+        <xs:sequence>
+          <xs:element name="No_Schedule_Reason_Code" type="xs:string"/>
+          <xs:element minOccurs="0" name="Comment" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Parameter" type="tns:Parameter"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Error_Type">
+        <xs:sequence>
+          <xs:element name="Error_Code" type="xs:string"/>
+          <xs:element name="Error_Message" type="xs:string"/>
+          <xs:element minOccurs="0" name="Validation_Error" type="tns:Validation_Error_Type"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Validation_Error_Type">
+        <xs:sequence>
+          <xs:element name="Message" type="xs:string"/>
+          <xs:element minOccurs="0" name="Path" type="xs:string"/>
+          <xs:element minOccurs="0" name="Value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Error_Data_Parameters">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Parameter" type="tns:Validation_Error_Type"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Param_Of_Referral">
+        <xs:sequence>
+          <xs:element name="Referral_Id" type="xs:string"/>
+          <xs:element name="Referral_Number" type="xs:string"/>
+          <xs:element name="Referral_Type" type="xs:int"/>
+          <xs:element name="Referral_Start_Date" type="xs:date"/>
+          <xs:element minOccurs="0" name="Referral_End_Date" type="xs:date"/>
+          <xs:element name="Payment_Source_Id" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="To_MO_OID" type="xs:string"/>
+          <xs:element minOccurs="0" name="To_Service_Post" type="tns:Service_Post"/>
+          <xs:element minOccurs="0" name="To_Service_Specialty" type="tns:Service_Specialty"/>
+          <xs:element minOccurs="0" name="To_Resource_Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="To_Resource_Snils" type="xs:string"/>
+          <xs:element minOccurs="0" name="Desease" type="xs:string"/>
+          <xs:element minOccurs="0" name="Note" type="xs:string"/>
+          <xs:element name="From_MO_OID" type="xs:string"/>
+          <xs:element name="From_Post" type="tns:Post"/>
+          <xs:element name="From_Resource_Name" type="xs:string"/>
+          <xs:element name="From_Resource_Snils" type="xs:string"/>
+          <xs:element name="Available_Record" type="xs:string"/>
+          <xs:element minOccurs="0" name="Reason_Not_Available" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MO_Resource_List">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="MO_Available" type="tns:MO_Available"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MO_Available">
+        <xs:sequence>
+          <xs:element name="MO" type="tns:MO_Param_Age"/>
+          <xs:element name="Resource_Available" type="tns:Resource_Available"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Resource_Available">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Resource" type="tns:Resource_Param"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Resource_Param">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Specialist" type="tns:Specialist_Param"/>
+          <xs:element minOccurs="0" name="Room" type="tns:Room_Param"/>
+          <xs:element minOccurs="0" name="Available_Dates">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Available_Date" type="xs:dateTime"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Available_Date" type="tns:Available_Date"/>
+          <xs:element minOccurs="0" name="No_Schedule_Reason" type="tns:No_Schedule_Reason"/>
+          <xs:element minOccurs="0" name="Schedule">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Slots">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="Slot_Id" type="xs:string"/>
+                      <xs:element name="VisitTime" type="xs:anySimpleType"/>
+                      <xs:element minOccurs="0" name="Room" type="xs:string"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="Age_Group" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Specialist_Param">
+        <xs:sequence>
+          <xs:element name="Last_Name" type="xs:string"/>
+          <xs:element name="First_Name" type="xs:string"/>
+          <xs:element minOccurs="0" name="Middle_Name" type="xs:string"/>
+          <xs:element name="SNILS" type="xs:string"/>
+          <xs:element name="Post" type="tns:Post"/>
+          <xs:element minOccurs="0" name="Category" type="xs:integer"/>
+          <xs:element minOccurs="0" name="Academic_Degree" type="xs:integer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Room_Param">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Room_Id" type="xs:string"/>
+          <xs:element name="Room_OID" type="xs:string"/>
+          <xs:element minOccurs="0" name="Room_Number" type="xs:string"/>
+          <xs:element name="Room_Name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Available_Date">
+        <xs:sequence>
+          <xs:element name="Nearest_DateTime" type="xs:dateTime"/>
+          <xs:element name="Slot_Id" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Patient_Attachment">
+        <xs:sequence>
+          <xs:element name="MO" type="tns:MO_Param"/>
+          <xs:element maxOccurs="unbounded" name="Attending_Doctor" type="tns:Attending_Doctor"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Attending_Doctor">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Attachment" type="tns:Attachment"/>
+          <xs:element minOccurs="0" name="Specialist" type="tns:Specialist_Param"/>
+          <xs:element minOccurs="0" name="Profile_Post" type="tns:Post"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Attachment">
+        <xs:sequence>
+          <xs:element name="Attachment_Purpose" type="xs:string"/>
+          <xs:element name="Attachment_Date" type="xs:date"/>
+          <xs:element minOccurs="0" name="Cards_Id" type="xs:string"/>
+          <xs:element minOccurs="0" name="Medical_Area" type="tns:Medical_Area"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Available_Posts" type="tns:Post"/>
+          <xs:element minOccurs="0" name="No_Available_Posts" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Medical_Area">
+        <xs:sequence>
+          <xs:element name="Medical_Area_Type" type="xs:int"/>
+          <xs:element name="Medical_Area_Id" type="xs:string"/>
+          <xs:element name="Medical_Area_Number" type="xs:string"/>
+          <xs:element minOccurs="0" name="Medical_Area_Room_Number" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Examination">
+        <xs:sequence>
+          <xs:element name="Examination_Type" type="xs:string"/>
+          <xs:element minOccurs="0" name="Cards_Id" type="xs:string"/>
+          <xs:element minOccurs="0" name="Age_Period_Start" type="xs:int"/>
+          <xs:element name="Examination_Status" type="xs:string"/>
+          <xs:element minOccurs="0" name="Examination_Status_Details" type="tns:Examination_Status_Details"/>
+          <xs:element minOccurs="0" name="Is_Questionnaire_Filled" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Examination_Status_Details">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Unavailable_Reason" type="xs:string"/>
+          <xs:element minOccurs="0" name="Unavailable_Reason_Code" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Parameter" type="tns:Parameter"/>
+          <xs:element minOccurs="0" name="Location_Date" type="tns:Location_Date"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Location_Date">
+        <xs:sequence>
+          <xs:element name="Examination_Date" type="xs:dateTime"/>
+          <xs:element name="MO" type="tns:MO_Param"/>
+          <xs:element minOccurs="0" name="Examination_Location" type="tns:MO_Param"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Referrals">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Referral" type="tns:Param_Of_Referral"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MO_Resource_Service_List">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="MO_Available" type="tns:MO_Service_Available"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MO_Service_Available">
+        <xs:sequence>
+          <xs:element name="MO" type="tns:MO_Param_Age"/>
+          <xs:element name="Resource_Available" type="tns:Resource_Service_Available"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Resource_Service_Available">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Resource" type="tns:Resource_Services"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Resource_Services">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Specialist" type="tns:Specialist_Param"/>
+          <xs:element minOccurs="0" name="Room" type="tns:Room_Param"/>
+          <xs:element maxOccurs="unbounded" name="Service_Availability" type="tns:Service_Availability"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Service_Availability">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="Service" type="tns:Service_Price"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="Available_Date" type="tns:Available_Date"/>
+          <xs:element minOccurs="0" name="No_Schedule_Reason" type="tns:No_Schedule_Reason"/>
+          <xs:element name="Age_Group" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Service_Price">
+        <xs:complexContent>
+          <xs:extension base="tns:Service">
+            <xs:sequence>
+              <xs:element name="Price" type="xs:double"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Service_Post_Specs">
+        <xs:sequence>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="Service_Post" type="tns:Service_Post"/>
+            <xs:element name="Service_Specialty" type="tns:Service_Specialty"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Patient_Info">
+        <xs:sequence>
+          <xs:element name="Age" type="xs:int"/>
+          <xs:element name="Is_Villager" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Patient_Info_Sex">
+        <xs:complexContent>
+          <xs:extension base="tns:Patient_Info">
+            <xs:sequence>
+              <xs:element name="Sex" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:simpleType name="Sex">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="F"/>
+          <xs:enumeration value="M"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Holder">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PATIENT"/>
+          <xs:enumeration value="REPRESENTATIVE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Booking_Status">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="RESERVE"/>
+          <xs:enumeration value="RECORD"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Canceled_Reason">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CANCELED_BY_PATIENT"/>
+          <xs:enumeration value="ERROR_DATA_MIS"/>
+          <xs:enumeration value="RECORD_NOT_CREATED_AT_EPGU"/>
+          <xs:enumeration value="DATA_TRANSFER_ERROR_AT_EPGU"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Appointment_Status">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="RECORDED"/>
+          <xs:enumeration value="CANCELED"/>
+          <xs:enumeration value="SUCCESS"/>
+          <xs:enumeration value="PATIENT_NOT_ARRIVED"/>
+          <xs:enumeration value="PATIENT_CANCELED"/>
+          <xs:enumeration value="VACCINATIONS_MEDICAL_RECUSAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Available_Record">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AVAILABLE"/>
+          <xs:enumeration value="AVAILABLE_ONLY_RECEPTION"/>
+          <xs:enumeration value="AVAILABLE_ONLY_DOCTOR"/>
+          <xs:enumeration value="NO_APPOINTMENT"/>
+          <xs:enumeration value="UNAVAILABLE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Patient_Info_Kind">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="VACCINATION"/>
+          <xs:enumeration value="AVAILABLE_POSTS"/>
+          <xs:enumeration value="ATTACHMENT"/>
+          <xs:enumeration value="EXAMINATION"/>
+          <xs:enumeration value="D_OBSERVATION"/>
+          <xs:enumeration value="REFERRAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Attachment_Purpose">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="MAIN"/>
+          <xs:enumeration value="D_OBSERVATION"/>
+          <xs:enumeration value="GYNECOLOGICAL"/>
+          <xs:enumeration value="DENTAL"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Examination_Type">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="DISPENSARY"/>
+          <xs:enumeration value="PROPHYLACTIC_ADULT"/>
+          <xs:enumeration value="PROPHYLACTIC_CHILD"/>
+          <xs:enumeration value="D_OBSERVATION"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Examination_Status">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AVAILABLE"/>
+          <xs:enumeration value="UNAVAILABLE"/>
+          <xs:enumeration value="SUCCESS"/>
+          <xs:enumeration value="INCLUDED_IN_PLAN"/>
+          <xs:enumeration value="RECORDED"/>
+          <xs:enumeration value="UNDEFINED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="Unavailable_Reason_Code">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="EXAMINATION_STARTED"/>
+          <xs:enumeration value="NEED_D_OBSERVATION"/>
+          <xs:enumeration value="MO_NOT_SERVICED"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateAppointment">
+    <wsdl:part element="tns:CreateAppointmentRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMOInfoExtended">
+    <wsdl:part element="tns:GetMOInfoExtendedRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMOInfoExtendedResponse">
+    <wsdl:part element="tns:GetMOInfoExtendedResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMOResourceInfoResponse">
+    <wsdl:part element="tns:GetMOResourceInfoResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetScheduleInfo">
+    <wsdl:part element="tns:GetScheduleInfoRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPatientInfoResponse">
+    <wsdl:part element="tns:GetPatientInfoResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReferralAppointmentInformation">
+    <wsdl:part element="tns:ReferralAppointmentInformationRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReferralAppointmentInformationResponse">
+    <wsdl:part element="tns:ReferralAppointmentInformationResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetPatientInfo">
+    <wsdl:part element="tns:GetPatientInfoRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetScheduleInfoResponse">
+    <wsdl:part element="tns:GetScheduleInfoResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelAppointmentResponse">
+    <wsdl:part element="tns:CancelAppointmentResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetServicePostSpecsInfoResponse">
+    <wsdl:part element="tns:GetServicePostSpecsInfoResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreateAppointmentResponse">
+    <wsdl:part element="tns:CreateAppointmentResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CancelAppointment">
+    <wsdl:part element="tns:CancelAppointmentRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetReferralInfoResponse">
+    <wsdl:part element="tns:GetReferralInfoResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMOResourceInfoPaidResponse">
+    <wsdl:part element="tns:GetMOResourceInfoPaidResponse" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMOResourceInfo">
+    <wsdl:part element="tns:GetMOResourceInfoRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetMOResourceInfoPaid">
+    <wsdl:part element="tns:GetMOResourceInfoPaidRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetReferralInfo">
+    <wsdl:part element="tns:GetReferralInfoRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetServicePostSpecsInfo">
+    <wsdl:part element="tns:GetServicePostSpecsInfoRequest" name="parameter"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ErWebService">
+    <wsdl:operation name="CreateAppointment">
+      <wsdl:input message="tns:CreateAppointment" name="CreateAppointment"></wsdl:input>
+      <wsdl:output message="tns:CreateAppointmentResponse" name="CreateAppointmentResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOInfoExtended">
+      <wsdl:input message="tns:GetMOInfoExtended" name="GetMOInfoExtended"></wsdl:input>
+      <wsdl:output message="tns:GetMOInfoExtendedResponse" name="GetMOInfoExtendedResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleInfo">
+      <wsdl:input message="tns:GetScheduleInfo" name="GetScheduleInfo"></wsdl:input>
+      <wsdl:output message="tns:GetScheduleInfoResponse" name="GetScheduleInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <wsdl:input message="tns:CancelAppointment" name="CancelAppointment"></wsdl:input>
+      <wsdl:output message="tns:CancelAppointmentResponse" name="CancelAppointmentResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReferralAppointmentInformation">
+      <wsdl:input message="tns:ReferralAppointmentInformation" name="ReferralAppointmentInformation"></wsdl:input>
+      <wsdl:output message="tns:ReferralAppointmentInformationResponse" name="ReferralAppointmentInformationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOResourceInfo">
+      <wsdl:input message="tns:GetMOResourceInfo" name="GetMOResourceInfo"></wsdl:input>
+      <wsdl:output message="tns:GetMOResourceInfoResponse" name="GetMOResourceInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientInfo">
+      <wsdl:input message="tns:GetPatientInfo" name="GetPatientInfo"></wsdl:input>
+      <wsdl:output message="tns:GetPatientInfoResponse" name="GetPatientInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOResourceInfoPaid">
+      <wsdl:input message="tns:GetMOResourceInfoPaid" name="GetMOResourceInfoPaid"></wsdl:input>
+      <wsdl:output message="tns:GetMOResourceInfoPaidResponse" name="GetMOResourceInfoPaidResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReferralInfo">
+      <wsdl:input message="tns:GetReferralInfo" name="GetReferralInfo"></wsdl:input>
+      <wsdl:output message="tns:GetReferralInfoResponse" name="GetReferralInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicePostSpecsInfo">
+      <wsdl:input message="tns:GetServicePostSpecsInfo" name="GetServicePostSpecsInfo"></wsdl:input>
+      <wsdl:output message="tns:GetServicePostSpecsInfoResponse" name="GetServicePostSpecsInfoResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ErPortalSoapBinding" type="tns:ErWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CreateAppointment">
+      <soap:operation soapAction="CreateAppointment" style="document"/>
+      <wsdl:input name="CreateAppointment">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CreateAppointmentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOInfoExtended">
+      <soap:operation soapAction="GetMOInfoExtended" style="document"/>
+      <wsdl:input name="GetMOInfoExtended">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetMOInfoExtendedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScheduleInfo">
+      <soap:operation soapAction="GetScheduleInfo" style="document"/>
+      <wsdl:input name="GetScheduleInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetScheduleInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelAppointment">
+      <soap:operation soapAction="CancelAppointment" style="document"/>
+      <wsdl:input name="CancelAppointment">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="CancelAppointmentResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReferralAppointmentInformation">
+      <soap:operation soapAction="ReferralAppointmentInformation" style="document"/>
+      <wsdl:input name="ReferralAppointmentInformation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ReferralAppointmentInformationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOResourceInfo">
+      <soap:operation soapAction="GetMOResourceInfo" style="document"/>
+      <wsdl:input name="GetMOResourceInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetMOResourceInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientInfo">
+      <soap:operation soapAction="GetPatientInfo" style="document"/>
+      <wsdl:input name="GetPatientInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetPatientInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOResourceInfoPaid">
+      <soap:operation soapAction="GetMOResourceInfoPaid" style="document"/>
+      <wsdl:input name="GetMOResourceInfoPaid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetMOResourceInfoPaidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReferralInfo">
+      <soap:operation soapAction="GetReferralInfo" style="document"/>
+      <wsdl:input name="GetReferralInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetReferralInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicePostSpecsInfo">
+      <soap:operation soapAction="GetServicePostSpecsInfo" style="document"/>
+      <wsdl:input name="GetServicePostSpecsInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="GetServicePostSpecsInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ErPortal">
+    <wsdl:port binding="tns:ErPortalSoapBinding" name="ErWebService">
+      <soap:address location="http://test14new.is-mis.ru/FerCon/services/appointment"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint></con:endpoints><con:operation id="09cb4798-08b5-4d2f-ac71-bfea7c7dd1a2" isOneWay="false" action="CancelAppointment" name="CancelAppointment" bindingOperationName="CancelAppointment" type="Request-Response" outputName="CancelAppointmentResponse" inputName="CancelAppointment" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a42dc2a0-f079-46b4-8343-49669cb6b82b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:CancelAppointmentRequest>
+         <v2:Book_Id_Mis>?</v2:Book_Id_Mis>
+         <v2:Canceled_Reason>?</v2:Canceled_Reason>
+         <!--Optional:-->
+         <v2:Error_Data_Parameters>
+            <!--1 or more repetitions:-->
+            <v2:Parameter>
+               <v2:Message>?</v2:Message>
+               <!--Optional:-->
+               <v2:Path>?</v2:Path>
+               <!--Optional:-->
+               <v2:Value>?</v2:Value>
+            </v2:Parameter>
+         </v2:Error_Data_Parameters>
+      </v2:CancelAppointmentRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="CancelAppointment"/></con:call></con:operation><con:operation id="c333189b-ef72-46c0-a3e0-f6938a2f8698" isOneWay="false" action="CreateAppointment" name="CreateAppointment" bindingOperationName="CreateAppointment" type="Request-Response" outputName="CreateAppointmentResponse" inputName="CreateAppointment" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc8c74f3-a6e9-4bed-ac44-6f7bf728fbf0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:CreateAppointmentRequest>
+         <!--Optional:-->
+         <v2:Session_ID>?</v2:Session_ID>
+         <!--Optional:-->
+         <v2:Book_Id_Mis>?</v2:Book_Id_Mis>
+         <v2:Slot_Id>?</v2:Slot_Id>
+         <!--Optional:-->
+         <v2:Specialist_SNILS>?</v2:Specialist_SNILS>
+         <!--Optional:-->
+         <v2:Room_OID>?</v2:Room_OID>
+         <!--Optional:-->
+         <v2:Room_Id>?</v2:Room_Id>
+         <!--Optional:-->
+         <v2:MO_OID>?</v2:MO_OID>
+         <!--Optional:-->
+         <v2:Service_Post>
+            <v2:Post>
+               <!--Optional:-->
+               <v2:Post_Id>?</v2:Post_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Post>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Post>
+               <!--Optional:-->
+               <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+            </v2:Post>
+            <!--Optional:-->
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Post>
+         <!--Optional:-->
+         <v2:Service_Specialty>
+            <v2:Specialty_Id>?</v2:Specialty_Id>
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Specialty>
+         <!--Optional:-->
+         <v2:Service_Info>
+            <!--Optional:-->
+            <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+            <!--Optional:-->
+            <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+            <!--1 or more repetitions:-->
+            <v2:Service>
+               <!--Optional:-->
+               <v2:Service_Id>?</v2:Service_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Service>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Service>
+               <!--Optional:-->
+               <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+            </v2:Service>
+         </v2:Service_Info>
+         <!--Optional:-->
+         <v2:Vaccination_Id>?</v2:Vaccination_Id>
+         <!--Optional:-->
+         <v2:Referral_Id>?</v2:Referral_Id>
+         <!--Optional:-->
+         <v2:Cards_Id>?</v2:Cards_Id>
+         <!--Optional:-->
+         <v2:Age_Group>?</v2:Age_Group>
+         <!--Optional:-->
+         <v2:Patient_Data>
+            <!--Optional:-->
+            <v2:OMS_Number>?</v2:OMS_Number>
+            <!--Optional:-->
+            <v2:OMS_Series>?</v2:OMS_Series>
+            <!--Optional:-->
+            <v2:SNILS>?</v2:SNILS>
+            <v2:First_Name>?</v2:First_Name>
+            <v2:Last_Name>?</v2:Last_Name>
+            <!--Optional:-->
+            <v2:Middle_Name>?</v2:Middle_Name>
+            <v2:Birth_Date>?</v2:Birth_Date>
+            <v2:Sex>?</v2:Sex>
+            <!--Optional:-->
+            <v2:Email>?</v2:Email>
+            <!--Optional:-->
+            <v2:Phone>?</v2:Phone>
+         </v2:Patient_Data>
+         <!--Optional:-->
+         <v2:Requisites>
+            <v2:DUL>
+               <v2:Type>?</v2:Type>
+               <v2:Holder>?</v2:Holder>
+               <!--Optional:-->
+               <v2:Series>?</v2:Series>
+               <v2:Number>?</v2:Number>
+               <v2:Issue_Date>?</v2:Issue_Date>
+               <v2:Issued_By>?</v2:Issued_By>
+            </v2:DUL>
+            <!--Optional:-->
+            <v2:Last_Name>?</v2:Last_Name>
+            <!--Optional:-->
+            <v2:First_Name>?</v2:First_Name>
+            <!--Optional:-->
+            <v2:Middle_Name>?</v2:Middle_Name>
+         </v2:Requisites>
+         <!--Optional:-->
+         <v2:Booking_Status>?</v2:Booking_Status>
+      </v2:CreateAppointmentRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="CreateAppointment"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c78c8cda-7a6b-4189-957b-d50cced4858d" isOneWay="false" action="GetMOInfoExtended" name="GetMOInfoExtended" bindingOperationName="GetMOInfoExtended" type="Request-Response" outputName="GetMOInfoExtendedResponse" inputName="GetMOInfoExtended" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c7ed0000-950d-4b3e-b374-52fe01182b35" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetMOInfoExtendedRequest>
+         <v2:Session_ID>?</v2:Session_ID>
+         <!--Optional:-->
+         <v2:Service_Posts>
+            <!--1 or more repetitions:-->
+            <v2:Post>
+               <!--Optional:-->
+               <v2:Post_Id>?</v2:Post_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Post>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Post>
+               <!--Optional:-->
+               <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+            </v2:Post>
+            <!--Optional:-->
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Posts>
+         <!--Optional:-->
+         <v2:Service_Specialty>
+            <v2:Specialty_Id>?</v2:Specialty_Id>
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Specialty>
+         <!--Optional:-->
+         <v2:Vaccination_Id>?</v2:Vaccination_Id>
+         <!--Optional:-->
+         <v2:Available_Date_inMO>?</v2:Available_Date_inMO>
+         <!--Optional:-->
+         <v2:Start_Date_Range>?</v2:Start_Date_Range>
+         <!--Optional:-->
+         <v2:End_Date_Range>?</v2:End_Date_Range>
+      </v2:GetMOInfoExtendedRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetMOInfoExtended"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="f11154b4-b61f-4921-a123-de5b3d43d796" isOneWay="false" action="GetMOResourceInfo" name="GetMOResourceInfo" bindingOperationName="GetMOResourceInfo" type="Request-Response" outputName="GetMOResourceInfoResponse" inputName="GetMOResourceInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="570c9479-dda1-499d-aa7d-386b9cd96da5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetMOResourceInfoRequest>
+         <!--Optional:-->
+         <v2:Session_ID>?</v2:Session_ID>
+         <!--Optional:-->
+         <v2:Book_Id_Mis>?</v2:Book_Id_Mis>
+         <!--Optional:-->
+         <v2:Service_Posts>
+            <!--1 or more repetitions:-->
+            <v2:Post>
+               <!--Optional:-->
+               <v2:Post_Id>?</v2:Post_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Post>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Post>
+               <!--Optional:-->
+               <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+            </v2:Post>
+            <!--Optional:-->
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Posts>
+         <!--Optional:-->
+         <v2:Service_Specialty>
+            <v2:Specialty_Id>?</v2:Specialty_Id>
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Specialty>
+         <!--Optional:-->
+         <v2:Vaccination_Id>?</v2:Vaccination_Id>
+         <!--Optional:-->
+         <v2:MO_OID_List>
+            <!--1 or more repetitions:-->
+            <v2:MO_OID>?</v2:MO_OID>
+         </v2:MO_OID_List>
+         <!--Optional:-->
+         <v2:Referral_Id>?</v2:Referral_Id>
+         <!--Optional:-->
+         <v2:Cards_Id>?</v2:Cards_Id>
+         <!--Optional:-->
+         <v2:Slot_List>?</v2:Slot_List>
+         <v2:Start_Date_Range>?</v2:Start_Date_Range>
+         <v2:End_Date_Range>?</v2:End_Date_Range>
+         <!--Optional:-->
+         <v2:Referral>
+            <v2:Referral_Id>?</v2:Referral_Id>
+            <v2:Referral_Number>?</v2:Referral_Number>
+            <v2:Referral_Type>?</v2:Referral_Type>
+            <v2:Referral_Start_Date>?</v2:Referral_Start_Date>
+            <!--Optional:-->
+            <v2:Referral_End_Date>?</v2:Referral_End_Date>
+            <v2:Payment_Source_Id>?</v2:Payment_Source_Id>
+            <!--Zero or more repetitions:-->
+            <v2:To_MO_OID>?</v2:To_MO_OID>
+            <!--Optional:-->
+            <v2:To_Service_Post>
+               <v2:Post>
+                  <!--Optional:-->
+                  <v2:Post_Id>?</v2:Post_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Post>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Post>
+                  <!--Optional:-->
+                  <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+               </v2:Post>
+               <!--Optional:-->
+               <v2:Services_Info>
+                  <!--Optional:-->
+                  <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+                  <!--Optional:-->
+                  <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+                  <!--1 or more repetitions:-->
+                  <v2:Service>
+                     <!--Optional:-->
+                     <v2:Service_Id>?</v2:Service_Id>
+                     <!--Optional:-->
+                     <v2:Add_Info_Service>
+                        <v2:Inner_Id>?</v2:Inner_Id>
+                        <v2:Inner_Name>?</v2:Inner_Name>
+                     </v2:Add_Info_Service>
+                     <!--Optional:-->
+                     <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+                  </v2:Service>
+               </v2:Services_Info>
+            </v2:To_Service_Post>
+            <!--Optional:-->
+            <v2:To_Service_Specialty>
+               <v2:Specialty_Id>?</v2:Specialty_Id>
+               <v2:Services_Info>
+                  <!--Optional:-->
+                  <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+                  <!--Optional:-->
+                  <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+                  <!--1 or more repetitions:-->
+                  <v2:Service>
+                     <!--Optional:-->
+                     <v2:Service_Id>?</v2:Service_Id>
+                     <!--Optional:-->
+                     <v2:Add_Info_Service>
+                        <v2:Inner_Id>?</v2:Inner_Id>
+                        <v2:Inner_Name>?</v2:Inner_Name>
+                     </v2:Add_Info_Service>
+                     <!--Optional:-->
+                     <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+                  </v2:Service>
+               </v2:Services_Info>
+            </v2:To_Service_Specialty>
+            <!--Optional:-->
+            <v2:To_Resource_Name>?</v2:To_Resource_Name>
+            <!--Optional:-->
+            <v2:To_Resource_Snils>?</v2:To_Resource_Snils>
+            <!--Optional:-->
+            <v2:Desease>?</v2:Desease>
+            <!--Optional:-->
+            <v2:Note>?</v2:Note>
+            <v2:From_MO_OID>?</v2:From_MO_OID>
+            <v2:From_Post>
+               <!--Optional:-->
+               <v2:Post_Id>?</v2:Post_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Post>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Post>
+               <!--Optional:-->
+               <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+            </v2:From_Post>
+            <v2:From_Resource_Name>?</v2:From_Resource_Name>
+            <v2:From_Resource_Snils>?</v2:From_Resource_Snils>
+            <v2:Available_Record>?</v2:Available_Record>
+            <!--Optional:-->
+            <v2:Reason_Not_Available>?</v2:Reason_Not_Available>
+         </v2:Referral>
+         <!--Optional:-->
+         <v2:Patient_Data>
+            <!--Optional:-->
+            <v2:OMS_Number>?</v2:OMS_Number>
+            <!--Optional:-->
+            <v2:OMS_Series>?</v2:OMS_Series>
+            <!--Optional:-->
+            <v2:SNILS>?</v2:SNILS>
+            <v2:First_Name>?</v2:First_Name>
+            <v2:Last_Name>?</v2:Last_Name>
+            <!--Optional:-->
+            <v2:Middle_Name>?</v2:Middle_Name>
+            <v2:Birth_Date>?</v2:Birth_Date>
+            <v2:Sex>?</v2:Sex>
+            <!--Optional:-->
+            <v2:Email>?</v2:Email>
+            <!--Optional:-->
+            <v2:Phone>?</v2:Phone>
+         </v2:Patient_Data>
+      </v2:GetMOResourceInfoRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetMOResourceInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d2e5f782-5792-4ca7-b037-f16ace89b7cf" isOneWay="false" action="GetMOResourceInfoPaid" name="GetMOResourceInfoPaid" bindingOperationName="GetMOResourceInfoPaid" type="Request-Response" outputName="GetMOResourceInfoPaidResponse" inputName="GetMOResourceInfoPaid" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3d446f2f-0e17-421f-aaf1-26d60ecc04e1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetMOResourceInfoPaidRequest>
+         <v2:Session_ID>?</v2:Session_ID>
+         <!--Optional:-->
+         <v2:Service_Post>
+            <v2:Post>
+               <!--Optional:-->
+               <v2:Post_Id>?</v2:Post_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Post>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Post>
+               <!--Optional:-->
+               <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+            </v2:Post>
+            <!--Optional:-->
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Post>
+         <!--Optional:-->
+         <v2:Service_Info>
+            <!--Optional:-->
+            <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+            <!--Optional:-->
+            <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+            <!--1 or more repetitions:-->
+            <v2:Service>
+               <!--Optional:-->
+               <v2:Service_Id>?</v2:Service_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Service>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Service>
+               <!--Optional:-->
+               <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+            </v2:Service>
+         </v2:Service_Info>
+         <!--1 or more repetitions:-->
+         <v2:MO_OID>?</v2:MO_OID>
+         <v2:Start_Date_Range>?</v2:Start_Date_Range>
+         <v2:End_Date_Range>?</v2:End_Date_Range>
+      </v2:GetMOResourceInfoPaidRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetMOResourceInfoPaid"/></con:call></con:operation><con:operation id="bed80819-6a63-4513-b439-86e9fb4877af" isOneWay="false" action="GetPatientInfo" name="GetPatientInfo" bindingOperationName="GetPatientInfo" type="Request-Response" outputName="GetPatientInfoResponse" inputName="GetPatientInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7ab64eae-a5a8-46ee-a4bb-21c6301b09ce" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://90.188.57.70/bms/ferv310</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetPatientInfoRequest>
+         <v2:Session_ID>762653bf-3e2c-4d51-9d28-889b9c58b46b</v2:Session_ID>
+         <v2:Patient_Data>
+            <!--Optional:-->
+<!--            <v2:OMS_Number></v2:OMS_Number>-->
+            <!--Optional:-->
+<!--            <v2:OMS_Series>?</v2:OMS_Series>-->
+            <!--Optional:-->
+            <v2:SNILS>000-333-999 77</v2:SNILS>
+            <v2:First_Name>Кристал</v2:First_Name>
+            <v2:Last_Name>Рилай</v2:Last_Name>
+            <!--Optional:-->
+            <v2:Middle_Name>Мейден</v2:Middle_Name>
+            <v2:Birth_Date>1976-03-30</v2:Birth_Date>
+            <v2:Sex>F</v2:Sex>
+            <!--Optional:-->
+<!--            <v2:Email>?</v2:Email>-->
+            <!--Optional:-->
+<!--            <v2:Phone>?</v2:Phone>-->
+         </v2:Patient_Data>
+         <!--Optional:-->
+<!--         <v2:Pass_referral>278563</v2:Pass_referral>-->
+         <!--Zero or more repetitions:-->
+<!--         <v2:Patient_Info_Kind>?</v2:Patient_Info_Kind>-->
+      </v2:GetPatientInfoRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetPatientInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bff912ca-e817-4ec2-8842-ccd09c7b4026" isOneWay="false" action="GetReferralInfo" name="GetReferralInfo" bindingOperationName="GetReferralInfo" type="Request-Response" outputName="GetReferralInfoResponse" inputName="GetReferralInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fda134e5-6a0d-4395-a3de-49e8cb4dc83f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetReferralInfoRequest>
+         <v2:Session_ID>?</v2:Session_ID>
+         <v2:Patient_Data>
+            <!--Optional:-->
+            <v2:OMS_Number>?</v2:OMS_Number>
+            <!--Optional:-->
+            <v2:OMS_Series>?</v2:OMS_Series>
+            <!--Optional:-->
+            <v2:SNILS>?</v2:SNILS>
+            <v2:First_Name>?</v2:First_Name>
+            <v2:Last_Name>?</v2:Last_Name>
+            <!--Optional:-->
+            <v2:Middle_Name>?</v2:Middle_Name>
+            <v2:Birth_Date>?</v2:Birth_Date>
+            <v2:Sex>?</v2:Sex>
+            <!--Optional:-->
+            <v2:Email>?</v2:Email>
+            <!--Optional:-->
+            <v2:Phone>?</v2:Phone>
+         </v2:Patient_Data>
+         <v2:Referral_Number>?</v2:Referral_Number>
+      </v2:GetReferralInfoRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetReferralInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e9aa553a-2a4a-49d9-8343-874e67c61d3e" isOneWay="false" action="GetScheduleInfo" name="GetScheduleInfo" bindingOperationName="GetScheduleInfo" type="Request-Response" outputName="GetScheduleInfoResponse" inputName="GetScheduleInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9778a315-fd05-4733-a964-77e65bd39f71" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetScheduleInfoRequest>
+         <!--Optional:-->
+         <v2:Session_ID>?</v2:Session_ID>
+         <!--Optional:-->
+         <v2:Book_Id_Mis>?</v2:Book_Id_Mis>
+         <!--Optional:-->
+         <v2:Specialist_SNILS>?</v2:Specialist_SNILS>
+         <!--Optional:-->
+         <v2:Room_OID>?</v2:Room_OID>
+         <!--Optional:-->
+         <v2:Room_Id>?</v2:Room_Id>
+         <v2:MO_OID>?</v2:MO_OID>
+         <!--Optional:-->
+         <v2:Service_Post>
+            <v2:Post>
+               <!--Optional:-->
+               <v2:Post_Id>?</v2:Post_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Post>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Post>
+               <!--Optional:-->
+               <v2:Ext_Post_Id>?</v2:Ext_Post_Id>
+            </v2:Post>
+            <!--Optional:-->
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Post>
+         <!--Optional:-->
+         <v2:Service_Specialty>
+            <v2:Specialty_Id>?</v2:Specialty_Id>
+            <v2:Services_Info>
+               <!--Optional:-->
+               <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+               <!--Optional:-->
+               <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+               <!--1 or more repetitions:-->
+               <v2:Service>
+                  <!--Optional:-->
+                  <v2:Service_Id>?</v2:Service_Id>
+                  <!--Optional:-->
+                  <v2:Add_Info_Service>
+                     <v2:Inner_Id>?</v2:Inner_Id>
+                     <v2:Inner_Name>?</v2:Inner_Name>
+                  </v2:Add_Info_Service>
+                  <!--Optional:-->
+                  <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+               </v2:Service>
+            </v2:Services_Info>
+         </v2:Service_Specialty>
+         <!--Optional:-->
+         <v2:Service_Info>
+            <!--Optional:-->
+            <v2:Complex_Service_Name>?</v2:Complex_Service_Name>
+            <!--Optional:-->
+            <v2:Complex_Service_Id>?</v2:Complex_Service_Id>
+            <!--1 or more repetitions:-->
+            <v2:Service>
+               <!--Optional:-->
+               <v2:Service_Id>?</v2:Service_Id>
+               <!--Optional:-->
+               <v2:Add_Info_Service>
+                  <v2:Inner_Id>?</v2:Inner_Id>
+                  <v2:Inner_Name>?</v2:Inner_Name>
+               </v2:Add_Info_Service>
+               <!--Optional:-->
+               <v2:Ext_Service_Id>?</v2:Ext_Service_Id>
+            </v2:Service>
+         </v2:Service_Info>
+         <!--Optional:-->
+         <v2:Vaccination_Id>?</v2:Vaccination_Id>
+         <!--Optional:-->
+         <v2:Referral_Id>?</v2:Referral_Id>
+         <!--Optional:-->
+         <v2:Cards_Id>?</v2:Cards_Id>
+         <!--Optional:-->
+         <v2:Age_Group>?</v2:Age_Group>
+         <v2:Start_Date_Range>?</v2:Start_Date_Range>
+         <v2:End_Date_Range>?</v2:End_Date_Range>
+         <v2:Start_Time_Range>?</v2:Start_Time_Range>
+         <v2:End_Time_Range>?</v2:End_Time_Range>
+      </v2:GetScheduleInfoRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetScheduleInfo"/></con:call></con:operation><con:operation id="4ee26188-21b5-464b-8635-ae4197299dbe" isOneWay="false" action="GetServicePostSpecsInfo" name="GetServicePostSpecsInfo" bindingOperationName="GetServicePostSpecsInfo" type="Request-Response" outputName="GetServicePostSpecsInfoResponse" inputName="GetServicePostSpecsInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6c088433-2b0b-460b-8039-49e0d34616c0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:GetServicePostSpecsInfoRequest>
+         <v2:Session_ID>762653bf-3e2c-4d51-9d28-889b9c58b46b</v2:Session_ID>
+         <v2:MO_Id>140101000000273</v2:MO_Id>
+      </v2:GetServicePostSpecsInfoRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="GetServicePostSpecsInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1750c863-d059-4b3d-9f02-9eee337c5d71" isOneWay="false" action="ReferralAppointmentInformation" name="ReferralAppointmentInformation" bindingOperationName="ReferralAppointmentInformation" type="Request-Response" outputName="ReferralAppointmentInformationResponse" inputName="ReferralAppointmentInformation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ed25d5ca-8158-4b72-a024-ac1c9d3a1751" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://test14new.is-mis.ru/FerCon/services/appointment</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v2="http://www.rt-eu.ru/med/er/v2_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v2:ReferralAppointmentInformationRequest>
+         <v2:Book_Id_Mis>?</v2:Book_Id_Mis>
+         <v2:Referral_Id>?</v2:Referral_Id>
+         <v2:Appointment_Status>?</v2:Appointment_Status>
+         <v2:MO_OID>?</v2:MO_OID>
+         <v2:MO_Name>?</v2:MO_Name>
+         <v2:Resource_Name>?</v2:Resource_Name>
+         <v2:Visit_Time>?</v2:Visit_Time>
+      </v2:ReferralAppointmentInformationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ReferralAppointmentInformation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
